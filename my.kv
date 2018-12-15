@@ -1,0 +1,86 @@
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+
+
+
+ScreenManager:
+  id: screen_manager
+  MenuScreen:
+    id: 'Menu'
+    name: 'Menu'
+    manager:'screen_manager'
+  AddContactScreen:
+	id:'AddContact'
+	name:'AddContact'
+	manager:'screen_manager'
+  SettingsScreen:
+    id: 'Settings'
+    name: 'Settings'
+    manager:'screen_manager'
+  AboutScreen:
+    id: 'About'
+    name: 'About'
+    manager:'screen_manager'
+	
+
+  
+
+<MenuScreen>:
+  BoxLayout:
+    size:root.size
+	orientation:"vertical"
+    ActionBar:
+	  pos_hint:{'top':1}
+      ActionView:
+        ActionPrevious:
+          title:"pyContacts"
+          on_press: app.root.current='About' 
+		ActionButton:
+		  text:"Add Contact"
+		  on_press: app.root.current='AddContact'
+        ActionButton:
+          text:"Settings"
+          on_press: app.root.current='Settings'
+	Label:
+	  text:"The contacts will be printed here"
+	  
+		
+		
+    
+    
+      
+
+<AddContactScreen>:
+  BoxLayout:
+    size:root.size
+    orientation:"vertical"
+    TextInput:
+      text:"Name:\n\nHome Number:\n\nCell Number:\n\nOffice Number:"
+	  multiline:False
+	  font_size:20
+	
+	    
+	Button:
+	  text:"Return"
+      on_press: app.root.current='Menu'
+	
+ 
+
+<SettingsScreen>:
+  BoxLayout:
+    size:root.size
+    orientation:"vertical"
+    Button:
+      text:"Button1"
+      on_press: app.root.current='Menu'
+
+<AboutScreen>:
+  BoxLayout:
+    size:root.size
+    orientation:"vertical"
+    Label:
+      text:"pyContacts\nversion 0.03"
+    Button:
+      text:"Return"
+      on_press: app.root.current='Menu'
